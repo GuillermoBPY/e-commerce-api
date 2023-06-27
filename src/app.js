@@ -8,19 +8,21 @@ require('dotenv').config();
 // Esta es nuestra aplicación
 const app = express();
 
-// Middlewares 
+// Middlewares
 app.use(express.json());
-app.use(helmet({
+app.use(
+  helmet({
     crossOriginResourcePolicy: false,
-}));
+  })
+);
 app.use(cors());
 
 app.use('/api/v1', router);
 app.get('/', (req, res) => {
-    return res.send("Welcome to express!");
-})
+  return res.send('Welcome to express!');
+});
 
 // middlewares después de las rutas
-app.use(errorHandler)
+app.use(errorHandler);
 
 module.exports = app;

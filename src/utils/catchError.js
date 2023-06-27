@@ -1,8 +1,7 @@
-const catchError = controller => {
-    return (req, res, next) => {
-        controller(req, res, next)
-            .catch(next);
-    }
-}
+const catchError = (controller) => {
+  return (req, res, next) => {
+    controller(req, res, next).catch(next);
+  };
+};
 
-module.exports = catchError
+module.exports = catchError;
