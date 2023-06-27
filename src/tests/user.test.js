@@ -1,5 +1,5 @@
 const supertest = require('supertest');
-const app = require('./../app');
+const app = require('../app');
 
 const URL_BASE = '/api/v1/users';
 let userId;
