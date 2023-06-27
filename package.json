@@ -1,0 +1,27 @@
+{
+  "name": "express-sequelize-g24",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": "./bin/cli.js",
+  "scripts": {
+    "start": "node src/server",
+    "dev": "nodemon src/server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "2.8.5",
+    "dotenv": "16.3.1",
+    "express": "4.18.2",
+    "helmet": "7.0.0",
+    "pg": "8.11.0",
+    "pg-hstore": "2.3.4",
+    "sequelize": "6.32.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
