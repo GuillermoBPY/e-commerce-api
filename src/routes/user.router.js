@@ -1,4 +1,4 @@
-const verifyJWT = require('../utils/verifyJWT.JS');
+const verifyJWT = require('./../utils/verifyJWT');
 const {
   getAll,
   create,
