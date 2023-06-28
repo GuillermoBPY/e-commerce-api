@@ -1,5 +1,6 @@
 const supertest = require('supertest');
 const app = require('./../app');
+require('./../models/Product');
 
 const BASE_URL = '/api/v1/products';
 const LOGIN_URL = `/api/v1/users/login`;
