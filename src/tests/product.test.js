@@ -1,12 +1,11 @@
 const supertest = require('supertest');
 const app = require('./../app');
-require('./../models/Product');
+const Category = require('../models/Category');
 
 const BASE_URL = '/api/v1/products';
 const LOGIN_URL = `/api/v1/users/login`;
-const CATEGORIES_URL = '/api/v1/categories';
 let productId;
-let categoryId;
+let category;
 let TOKEN;
 
 beforeAll(async () => {
@@ -16,14 +15,11 @@ beforeAll(async () => {
   };
   const resLogin = await supertest(app).post(LOGIN_URL).send(user);
   TOKEN = resLogin.body.token;
-  const body = {
+  const categorybody = {
     name: 'Smparthones',
   };
-  const resCategories = await supertest(app)
-    .post(CATEGORIES_URL)
-    .send(body)
-    .set('Authorization', `Bearer ${TOKEN}`);
-  categoryId = resCategories.body.id;
+  const resCategories = await Category.create(categorybody);
+  category = resCategories;
 });
 
 test('POST => BASE_URL, should return status 201 and res.body.length === 1', async () => {
@@ -31,7 +27,7 @@ test('POST => BASE_URL, should return status 201 and res.body.length === 1', asy
     title: 'SMPARTHONE SAMSUNG',
     description: 'LOREM TEXT TEXT ',
     price: 10.25,
-    categoryId,
+    categoryId: category.id,
   };
   const res = await supertest(app)
     .post(BASE_URL)
@@ -45,12 +41,20 @@ test('POST => BASE_URL, should return status 201 and res.body.length === 1', asy
 test('GET ALL => BASE_URL, should return status 200', async () => {
   const res = await supertest(app).get(BASE_URL);
   expect(res.status).toBe(200);
+  expect(res.body[0].category).toBeDefined();
+});
+
+test('GET ALL => BASE_URL?category, should return status 200', async () => {
+  const res = await supertest(app).get(`${BASE_URL}?category=${category.id}`);
+  expect(res.status).toBe(200);
+  expect(res.body[0].category).toBeDefined();
 });
 
 test('GET ONE => BASE_URL/:id, should return status 200', async () => {
   const res = await supertest(app).get(`${BASE_URL}/${productId}`);
   expect(res.status).toBe(200);
   expect(res.body.id).toBe(productId);
+  expect(res.body.category).toBeDefined();
 });
 
 test('PUT => BASE_URL/:id, should return status 200 and res.body.title === bodyUpdate.title', async () => {
@@ -70,4 +74,5 @@ test('DELETE => BASE_URL/:id, should return status code 204', async () => {
     .delete(`${BASE_URL}/${productId}`)
     .set('Authorization', `Bearer ${TOKEN}`);
   expect(res.status).toBe(204);
+  await category.destroy();
 });

@@ -2,8 +2,8 @@ const User = require('../../models/User');
 
 const user = async () => {
   const body = {
-    firstName: 'PruebaFirstName',
-    lastName: 'PruebaLastName',
+    firstName: 'createDataFirstName',
+    lastName: 'createDataLastName',
     email: 'prueba@academlo.com',
     password: '1234',
     phone: '+595975639565',
