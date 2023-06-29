@@ -16,7 +16,7 @@ const create = catchError(async (req, res) => {
   const { quantity, productId } = req.body;
 
   const verifyCart = await Cart.findOne({ where: { userId, productId } });
-  if (verifyCart) return res.sendStatus(400);
+  if (verifyCart) return res.sendStatus(409);
 
   const body = { quantity, productId, userId };
   const result = await Cart.create(body);
