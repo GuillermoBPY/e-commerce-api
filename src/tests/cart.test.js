@@ -21,7 +21,7 @@ beforeAll(async () => {
 
   const bodyProduct = {
     title: 'SMPARTHONE SAMSUNG',
-    description: 'CART CART CART ',
+    description: 'PRODUCT DE CART',
     price: 10.25,
   };
   resProduct = await Product.create(bodyProduct);
@@ -70,5 +70,6 @@ test('DELETE => BASE_URL/:id, should return status 204', async () => {
     .delete(`${BASE_URL}/${cartId}`)
     .set('Authorization', `Bearer ${TOKEN}`);
   expect(res.status).toBe(204);
+
   await resProduct.destroy();
 });
