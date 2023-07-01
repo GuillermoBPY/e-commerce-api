@@ -36,7 +36,7 @@ beforeAll(async () => {
   cartCreated = await Cart.create(bodyCart);
 });
 
-test('POST => BASE_URL, should return 201', async () => {
+test('POST => BASE_URL, should return 201 and res.body.length ===1', async () => {
   const res = await supertest(app)
     .post(BASE_URL)
     .set('Authorization', `Bearer ${TOKEN}`);
@@ -45,7 +45,7 @@ test('POST => BASE_URL, should return 201', async () => {
   expect(res.body).toHaveLength(1);
 });
 
-test('GET => BASE_URL, should return 200', async () => {
+test('GET => BASE_URL, should return 200 and res.body.length ===1', async () => {
   const res = await supertest(app)
     .get(BASE_URL)
     .set('Authorization', `Bearer ${TOKEN}`);

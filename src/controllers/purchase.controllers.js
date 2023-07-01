@@ -2,7 +2,6 @@ const catchError = require('../utils/catchError');
 const Purchase = require('../models/Purchase');
 const Product = require('../models/Product');
 const Cart = require('../models/Cart');
-const { where } = require('sequelize');
 
 const getAll = catchError(async (req, res) => {
   const userId = req.user.id;
