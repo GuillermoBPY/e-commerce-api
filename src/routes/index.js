@@ -13,7 +13,7 @@ router.use('/users', routerUser);
 router.use('/categories', routerCategory);
 router.use('/products', routerProduct);
 router.use('/cart', routerCart); //singular porque solo se tiene 1 solo carrito
-router.use('/purchase', routerPurchase);
+router.use('/purchases', routerPurchase);
 router.use('/product_images', routerProductImg);
 
 module.exports = router;

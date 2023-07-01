@@ -51,6 +51,7 @@ test('GET ALL => BASE_URL, should return status 200 and res.body.length === 1', 
 
   expect(res.status).toBe(200);
   expect(res.body).toHaveLength(1);
+  expect(res.body[0].product.productImgs).toBeDefined();
 });
 
 test('PUT => BASE_URL/:id, should return status 200 and res.body.quantity === body.quantity', async () => {
