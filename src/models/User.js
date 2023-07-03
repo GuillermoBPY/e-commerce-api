@@ -29,11 +29,9 @@ const User = sequelize.define('user', {
 User.prototype.toJSON = function () {
   const values = Object.assign({}, this.get());
   delete values.password;
-  // delete values.phone; se puede ir agregando más datos para no mostrar
   return values;
 };
 
-//User.beforeCreate Hook utilizado para realizar algo antes de que se cree el modelo
 User.beforeCreate(async (user) => {
   hashPassword = await bcrypt.hash(user.password, 10);
   user.password = hashPassword;

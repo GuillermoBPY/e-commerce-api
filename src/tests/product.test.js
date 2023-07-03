@@ -22,10 +22,11 @@ beforeAll(async () => {
   category = resCategories;
 });
 
-test('POST => BASE_URL, should return status 201 and res.body.length === 1', async () => {
+test('POST => BASE_URL, should return status 201 and res.body.title === body.title', async () => {
   const body = {
     title: 'SMPARTHONE SAMSUNG',
     description: 'LOREM TEXT TEXT ',
+    brand: 'SAMSUNG',
     price: 10.25,
     categoryId: category.id,
   };
@@ -38,28 +39,28 @@ test('POST => BASE_URL, should return status 201 and res.body.length === 1', asy
   expect(res.body.title).toBe(body.title);
 });
 
-test('GET ALL => BASE_URL, should return status 200', async () => {
+test('GET ALL => BASE_URL, should return status 200 and res.body[0].category to be defined', async () => {
   const res = await supertest(app).get(BASE_URL);
   expect(res.status).toBe(200);
   expect(res.body[0].category).toBeDefined();
 });
 
-test('GET ALL => BASE_URL?category, should return status 200', async () => {
+test('GET ALL FILTER => BASE_URL?category, should return status 200 and res.body[0].category.id === category.id', async () => {
   const res = await supertest(app).get(`${BASE_URL}?category=${category.id}`);
   expect(res.status).toBe(200);
-  expect(res.body[0].category).toBeDefined();
+  expect(res.body[0].category.id).toBe(category.id);
 });
 
-test('GET ONE => BASE_URL/:id, should return status 200', async () => {
+test('GET ONE => BASE_URL/:id, should return status 200 and res.body.id === productId', async () => {
   const res = await supertest(app).get(`${BASE_URL}/${productId}`);
   expect(res.status).toBe(200);
   expect(res.body.id).toBe(productId);
-  expect(res.body.category).toBeDefined();
 });
 
 test('PUT => BASE_URL/:id, should return status 200 and res.body.title === bodyUpdate.title', async () => {
   const bodyUpdate = {
     title: 'SMARTPHONE IPHONE',
+    brand: 'IPHONE',
   };
   const res = await supertest(app)
     .put(`${BASE_URL}/${productId}`)

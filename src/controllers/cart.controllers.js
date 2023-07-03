@@ -13,7 +13,7 @@ const getAll = catchError(async (req, res) => {
         include: {
           model: ProductImg,
           attributes: ['id', 'url'],
-          nested: true, // Anida los resultados de ProductImg dentro del objeto product
+          nested: true,
         },
       },
     ],

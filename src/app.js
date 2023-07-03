@@ -6,7 +6,7 @@ const errorHandler = require('./utils/errorHandler');
 const path = require('path');
 require('dotenv').config();
 
-// Esta es nuestra aplicación
+// API
 const app = express();
 
 // Middlewares
@@ -20,10 +20,10 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1', router);
 app.get('/', (req, res) => {
-  return res.send('Welcome to express!');
+  return res.send('You Shall Not Pass!🧙‍♂️');
 });
 
-// middlewares después de las rutas
+// Errors Middlewares
 app.use(errorHandler);
 
 module.exports = app;

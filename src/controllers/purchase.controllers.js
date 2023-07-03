@@ -14,7 +14,7 @@ const getAll = catchError(async (req, res) => {
         include: {
           model: ProductImg,
           attributes: ['id', 'url'],
-          nested: true, // Anida los resultados de ProductImg dentro del objeto product
+          nested: true,
         },
       },
     ],
@@ -26,12 +26,11 @@ const getAll = catchError(async (req, res) => {
 const create = catchError(async (req, res) => {
   const userId = req.user.id;
   const cart = await Cart.findAll({
-    //retornar un array de objetos con las coincidencias
     where: { userId },
-    attributes: ['quantity', 'userId', 'productId'], //sirve para elegir que datos queremos recibir
-    raw: true, //Sirve para trae en texto sin metodos especiales
+    attributes: ['quantity', 'userId', 'productId'],
+    raw: true,
   });
-  const result = await Purchase.bulkCreate(cart); //cuando el dato en un array de ojbetos se utiliza bulkCreate
+  const result = await Purchase.bulkCreate(cart);
   await Cart.destroy({ where: { userId } });
   return res.status(201).json(result);
 });

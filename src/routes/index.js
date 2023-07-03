@@ -7,13 +7,11 @@ const routerPurchase = require('./purchase.router');
 const routerProductImg = require('./productImg.router');
 const router = express.Router();
 
-// colocar las rutas aquí
-
 router.use('/users', routerUser);
 router.use('/categories', routerCategory);
 router.use('/products', routerProduct);
-router.use('/cart', routerCart); //singular porque solo se tiene 1 solo carrito
-router.use('/purchases', routerPurchase);
+router.use('/cart', routerCart);
+router.use('/purchase', routerPurchase);
 router.use('/product_images', routerProductImg);
 
 module.exports = router;

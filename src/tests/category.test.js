@@ -28,9 +28,10 @@ test('POST => BASE_URL, should return status 201 and res.body.name === body.name
   expect(res.body.name).toBe(body.name);
 });
 
-test('GET ALL => BASE_URL, should return status 200', async () => {
+test('GET ALL => BASE_URL, should return status 200 and res.body.length === 1', async () => {
   const res = await supertest(app).get(BASE_URL);
   expect(res.status).toBe(200);
+  expect(res.body).toHaveLength(1);
 });
 
 test('DELETE => BASE_URL/:id, should return status 204', async () => {

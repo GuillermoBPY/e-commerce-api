@@ -15,7 +15,6 @@ const getAll = catchError(async (req, res) => {
   });
   return res.json(results);
 });
-
 const create = catchError(async (req, res) => {
   const result = await Product.create(req.body);
   return res.status(201).json(result);

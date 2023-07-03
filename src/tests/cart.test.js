@@ -22,6 +22,7 @@ beforeAll(async () => {
   const bodyProduct = {
     title: 'SMPARTHONE SAMSUNG',
     description: 'PRODUCT DE CART',
+    brand: 'SAMSUNG',
     price: 10.25,
   };
   resProduct = await Product.create(bodyProduct);
@@ -38,17 +39,15 @@ test('POST => BASE_URL, should return status 201 and res.body.quantity === body.
     .post(BASE_URL)
     .send(body)
     .set('Authorization', `Bearer ${TOKEN}`);
-
   cartId = res.body.id;
   expect(res.status).toBe(201);
   expect(res.body.quantity).toBe(body.quantity);
 });
 
-test('GET ALL => BASE_URL, should return status 200 and res.body.length === 1', async () => {
+test('GET ALL => BASE_URL, should return status 200, res.body.length === 1 and res.body[0].product.productImgs to be defined', async () => {
   const res = await supertest(app)
     .get(BASE_URL)
     .set('Authorization', `Bearer ${TOKEN}`);
-
   expect(res.status).toBe(200);
   expect(res.body).toHaveLength(1);
   expect(res.body[0].product.productImgs).toBeDefined();
@@ -71,6 +70,5 @@ test('DELETE => BASE_URL/:id, should return status 204', async () => {
     .delete(`${BASE_URL}/${cartId}`)
     .set('Authorization', `Bearer ${TOKEN}`);
   expect(res.status).toBe(204);
-
   await resProduct.destroy();
 });
