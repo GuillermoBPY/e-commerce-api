@@ -11,12 +11,11 @@ const getAll = catchError(async (req, res) => {
   if (Object.keys(queryParams).length > 0) {
     Object.keys(queryParams).forEach((key) => {
       const value = queryParams[key];
-
       if (value && !isNaN(value)) {
         where[key] = parseInt(value, 10);
       } else if (value && typeof value === 'string') {
         where[key] = {
-          [Op.like]: `%${value}%`,
+          [Op.iLike]: `%${value}%`,
         };
       }
     });
