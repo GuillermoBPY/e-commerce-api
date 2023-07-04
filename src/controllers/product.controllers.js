@@ -10,9 +10,13 @@ const getAll = catchError(async (req, res) => {
   const where = {};
   if (Object.keys(queryParams).length > 0) {
     Object.keys(queryParams).forEach((key) => {
-      where[key] = {
-        [Op.like]: `%${queryParams[key]}%`,
-      };
+      if (!isNaN(queryParams[key])) {
+        where[key] = parseInt(queryParams[key], 10);
+      } else {
+        where[key] = {
+          [Op.like]: `%${queryParams[key]}%`,
+        };
+      }
     });
   }
   const results = await Product.findAll({
