@@ -5,14 +5,13 @@ const ProductImg = require('../models/ProductImg');
 require('./../models');
 
 const getAll = catchError(async (req, res) => {
-  // const { category } = req.query;
-  // const where = {};
-  // if (category) where.categoryId = category;
   const { ...queryParams } = req.query;
   const where = {};
   if (Object.keys(queryParams).length > 0) {
     Object.keys(queryParams).forEach((key) => {
-      where[key] = queryParams[key];
+      where[key] = {
+        [Op.like]: `%${queryParams[key]}%`,
+      };
     });
   }
   const results = await Product.findAll({

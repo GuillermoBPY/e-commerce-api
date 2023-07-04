@@ -54,8 +54,8 @@ test('GET ALL => BASE_URL, should return status 200, res.body[0].category and re
   expect(res.body[0].productImgs).toBeDefined();
 });
 
-test('GET ALL FILTER => BASE_URL?category, should return status 200, res.body[0].category.id === category.id and res.body[0].productImgs to be defined', async () => {
-  const res = await supertest(app).get(`${BASE_URL}?category=${category.id}`);
+test('GET ALL FILTER => BASE_URL?categoryId, should return status 200, res.body[0].category.id === category.id and res.body[0].productImgs to be defined', async () => {
+  const res = await supertest(app).get(`${BASE_URL}?categoryId=${category.id}`);
   expect(res.status).toBe(200);
   expect(res.body[0].category.id).toBe(category.id);
   expect(res.body[0].productImgs).toBeDefined();
