@@ -22,6 +22,7 @@ const welcome = () => {
     }
     ul {
       list-style: none;
+      padding:0
     }
     .profile-image {
       border-radius: 50%;
