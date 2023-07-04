@@ -4,6 +4,7 @@ const cors = require('cors');
 const router = require('./routes');
 const errorHandler = require('./utils/errorHandler');
 const path = require('path');
+const welcome = require('./utils/welcome');
 require('dotenv').config();
 
 // API
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1', router);
 app.get('/', (req, res) => {
-  return res.send('You Shall Not Pass!🧙‍♂️');
+  return res.send(welcome());
 });
 
 // Errors Middlewares
