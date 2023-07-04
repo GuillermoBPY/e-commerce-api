@@ -47,9 +47,9 @@ const update = catchError(async (req, res) => {
 
 const setImages = catchError(async (req, res) => {
   const { id } = req.params;
-  const product = await Product.findByPk(id);
   const imagesBody = req.body;
-  product.setProductImgs(imagesBody);
+  const product = await Product.findByPk(id);
+  await product.setProductImgs(imagesBody);
   const images = await product.getProductImgs();
   return res.json(images);
 });

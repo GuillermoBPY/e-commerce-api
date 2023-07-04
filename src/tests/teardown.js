@@ -1,15 +1,15 @@
 const sequelize = require('../utils/connection');
-const user = require('./createData/user');
 require('../models');
+
 const main = async () => {
   try {
     await sequelize.sync({ force: true });
-    console.log('Initialized test set🃏');
-    await user();
+    await sequelize.close();
+    console.log('The database has been reseted🧨');
     process.exit();
   } catch (error) {
     console.log(error);
   }
 };
 
-main();
+module.exports = main;
