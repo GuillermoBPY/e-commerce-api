@@ -2,4 +2,4 @@ node_modules
 .env
 bin 
 uploads
-.prettierrc
+ln -s .gitignore .prettierignore
