@@ -24,6 +24,9 @@ const welcome = () => {
       list-style: none;
       padding:0
     }
+    li{
+      margin: 0.5rem 0rem
+    }
     .profile-image {
       border-radius: 50%;
       width: 100px;
@@ -39,9 +42,10 @@ const welcome = () => {
 
   <p>Here are some useful links:</p>
   <ul>
-    <li><a href="https://e-commerce-guillermobpy.netlify.app/" target="_blank">API deployed on netlify</a></li>
-    <li><a href="https://e-commerce-api-plez.onrender.com/api/v1/products" target="_blank">View products</a></li>
-    <li><a href="https://e-commerce-api-plez.onrender.com/api/v1/categories" target="_blank">View categories</a></li>
+    <li><a href="https://e-commerce-guillermobpy.netlify.app/" target="_blank">🧧API deployed on netlify</a></li>
+    <li><a href="https://documenter.getpostman.com/view/26359439/2s93zCYg5g" target="_blank">📄View documentation</a></li>
+    <li><a href="https://e-commerce-api-plez.onrender.com/api/v1/products" target="_blank">🛒View products</a></li>
+    <li><a href="https://e-commerce-api-plez.onrender.com/api/v1/categories" target="_blank">🚥View categories</a></li>
   </ul>
 
   <img src="./../guillermobpy.png" alt="Profile image" class="profile-image">
