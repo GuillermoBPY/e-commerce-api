@@ -20,7 +20,7 @@ app.use(
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1', router);
-app.get('/', (req, res) => {
+app.all('/*', (req, res) => {
   return res.send(welcome());
 });
 
