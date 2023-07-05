@@ -2,5 +2,3 @@ node_modules
 .env
 bin 
 uploads
-.prettierrc
-.prettierignore
