@@ -1,7 +1,7 @@
 const welcome = () => {
   const html = `
   <head>
-  <title>Welcome to the API</title>
+  <title>Welcome to the E-COMMERCE API</title>
 
   <style>
     body {
@@ -44,6 +44,7 @@ const welcome = () => {
   <ul>
     <li><a href="https://e-commerce-guillermobpy.netlify.app/" target="_blank">🧧API deployed on netlify</a></li>
     <li><a href="https://documenter.getpostman.com/view/26359439/2s93zCYg5g" target="_blank">📄View documentation</a></li>
+    <li><a href="https://github.com/GuillermoBPY/e-commerce-api" target="_blank">👁‍🗨View repositorie</a></li>
     <li><a href="https://e-commerce-api-plez.onrender.com/api/v1/products" target="_blank">🛒View products</a></li>
     <li><a href="https://e-commerce-api-plez.onrender.com/api/v1/categories" target="_blank">🚥View categories</a></li>
   </ul>
